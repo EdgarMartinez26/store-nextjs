@@ -1,28 +1,14 @@
-// Define a type for a single product
-export interface Product {
-  name: string;
-  slug: string;
-  id?: string;
-  category: string;
-  description: string;
-  images: string[];
-  price: number;
-  originalPrice: number;
-  brand: string;
-  rating: number;
-  numReviews: number;
-  stock: number;
-  isFeatured: boolean;
-  bannerUrl: string | null;
-  tags: string[];
-  sizes: string[];
-  colors: string[];
-  discount: number; // percentage
-  createdAt?: string;
-  updatedAt?: string;
-}
+import { z } from "zod";
+import { insertProductSchema } from "@/lib/validator";
 
-// Define the type for the full data object
+// Infer the base type from Zod schema
+export type Product = z.infer<typeof insertProductSchema> & {
+  id?: string; // optional because Prisma generates it
+  createdAt?: string; // server-generated, optional
+  updatedAt?: string; // server-generated, optional
+};
+
+// Full sample data type
 export interface SampleDataWomen {
   products: Product[];
 }

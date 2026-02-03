@@ -1,4 +1,5 @@
 'use client';
+
 import { Product } from '@/types/Products';
 import Image from 'next/image';
 import Link from 'next/link';
