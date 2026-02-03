@@ -9,7 +9,7 @@ const ProductCard = ({ product }: { product: Product }) => {
     <div className="group w-full max-w-sm bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
       
       {/* Image container */}
-      <div className="relative w-full h-96 sm:h-96 md:h-96 lg:h-96 overflow-hidden">
+      <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 overflow-hidden">
         <Link href={`/products/${product.slug}`}>
           <Image
             src={product.images[0]}

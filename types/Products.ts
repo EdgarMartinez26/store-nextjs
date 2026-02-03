@@ -2,6 +2,7 @@
 export interface Product {
   name: string;
   slug: string;
+  id?: string;
   category: string;
   description: string;
   images: string[];
@@ -12,11 +13,13 @@ export interface Product {
   numReviews: number;
   stock: number;
   isFeatured: boolean;
-  banner: string | null;
+  bannerUrl: string | null;
   tags: string[];
   sizes: string[];
   colors: string[];
   discount: number; // percentage
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 // Define the type for the full data object

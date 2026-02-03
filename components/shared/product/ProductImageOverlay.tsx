@@ -9,6 +9,7 @@ type Props = {
 const ProductImageOverlay = ({ onExpand }: Props) => {
   return (
     <div
+      suppressHydrationWarning
       className="
         absolute bottom-0 left-0 right-0
         bg-white/40
