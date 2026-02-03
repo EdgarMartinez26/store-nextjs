@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 mx-auto sm:max-w-[540px] md:max-w-[760px]
+    lg:max-w-[960px] xl:max-w-[1150px] 2xl:max-w-[1350px];
+  }
+
+  .primary-btn {
+    @apply bg-neutral-800 px-8 py-5 rounded-[10px]
+    border border-neutral-600 hover:bg-neutral-700
+    transition-colors;
+  }
+  .subtitle {
+    @apply text-neutral-400 uppercase mb-1 text-sm lg:text-base;
+  }
+  p{
+    @apply text-neutral-400 text-base sm:text-lg lg:text-xl
+  }
+  h2{
+    @apply text-2xl uppercase font-semibold sm:text-3xl md:text-4xl;
+  }
+  .section{
+    @apply pt-24 md:mt-40
+  }
+}
+
+/* Header */
+.navbar {
+  @apply fixed top-0 left-0 lg:hidden bg-neutral-950 max-w-[320px] w-full h-screen
+  p-8 pt-16 -translate-x-[320px] transition-transform duration-300 z-40;
+}
+
+.navbar.active {
+  @apply translate-x-0;
+}
+
+/* Already correct, just confirming */
+.overlay {
+  @apply fixed top-0 left-0 w-full h-screen bg-neutral-800/50 opacity-0
+  transition-opacity duration-300 pointer-events-none z-30;
+}
+
+.overlay.active {
+  @apply opacity-100 pointer-events-auto;
+}
+
+.nav-link {
+  display: flex;
+  align-items: baseline;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin-left: 10px;
+  background: rgb(153,17,250);
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover .dot {
+  transform: translateY(-15px);
+}
