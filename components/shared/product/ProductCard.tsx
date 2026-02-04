@@ -6,37 +6,67 @@ import Link from 'next/link';
 import ProductImageOverlay from './ProductImageOverlay';
 
 const ProductCard = ({ product }: { product: Product }) => {
+  const hasSecondImage = product.images.length > 1;
+
   return (
-    <div className="group w-full max-w-sm bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div className="group w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-500 ease-out hover:shadow-xl">
       
       {/* Image container */}
-      <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 overflow-hidden">
-        <Link href={`/products/${product.slug}`}>
+      <div className="relative h-64 w-full overflow-hidden sm:h-72 md:h-80 lg:h-96">
+        <Link href={`/product/${product.slug}`} className="relative block h-full w-full">
+          
+          {/* Base image */}
           <Image
             src={product.images[0]}
             alt={product.name}
             fill
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
             priority
-            className="transition-transform duration-300 group-hover:scale-105"
+            className={`
+              object-cover
+              transition-all
+              duration-700
+              ease-in-out
+              will-change-transform
+              ${hasSecondImage ? 'group-hover:opacity-0' : 'opacity-100'}
+            `}
           />
+
+          {/* Hover image */}
+          {hasSecondImage && (
+            <Image
+              src={product.images[1]}
+              alt={`${product.name} alternate`}
+              fill
+              className="
+                object-cover
+                opacity-0
+                scale-105
+                transition-all
+                duration-700
+                ease-in-out
+                will-change-transform
+                group-hover:opacity-100
+                group-hover:scale-100
+              "
+            />
+          )}
         </Link>
 
-        {/* Hover footer overlay */}
+        {/* Overlay */}
         <ProductImageOverlay
           onExpand={() => {
-            console.log('Expand clicked'); // replace later with modal/card
+            console.log('Expand clicked');
           }}
         />
       </div>
 
-      {/* Text content */}
+      {/* Text */}
       <div className="p-4">
-        <h3 className="font-sans font-bold text-md text-gray-700">
+        <h3 className="text-md font-bold text-gray-700">
           {product.name}
         </h3>
-        <p className="text-sm mt-1 font-bold text-gray-400">
-          ${product.price}.00
+        <p className="mt-1 text-sm font-bold text-gray-400">
+          ${product.price.toFixed(2)}
         </p>
       </div>
     </div>

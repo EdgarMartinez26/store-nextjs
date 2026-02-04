@@ -4,13 +4,13 @@ import { formatNumberWithDecimal } from "./utils";
 const currency = z
   .string()
   .refine((value) => {
-    // Convert string to number first
     const num = Number(value);
-    // Check if the formatted number equals the original string
-    return formatNumberWithDecimal(num) === value;
+    return !Number.isNaN(num) && formatNumberWithDecimal(num) === value;
   }, {
     message: "Price must have exactly two decimal places",
-});
+  })
+  .transform((value) => Number(value)); // ✅ convert to number
+
 
 // Zod schema for Product
 export const insertProductSchema = z.object({
