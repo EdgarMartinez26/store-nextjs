@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer utilities {
   .wrapper {
@@ -91,4 +89,24 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.link-underline {
+  position: relative;
+  cursor: pointer;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.25s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
 }

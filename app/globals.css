@@ -1,25 +1,47 @@
 @import "tailwindcss";
 
+/* ======================
+   THEME VARIABLES
+====================== */
 @theme {
   --color-background: #0a0a0a;
   --color-foreground: #ffffff;
+
+  /* Tailwind equivalent of:
+     bg-gradient-to-br from-black via-gray-900 to-black */
+  --gradient-background: linear-gradient(
+    to bottom right,
+    #000000,
+    #111827,
+    #000000
+  );
 }
 
+/* ======================
+   BASE STYLES
+====================== */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-background);
+  min-height: 100vh;
+  background: var(--gradient-background);
   color: var(--color-foreground);
 }
 
+/* ======================
+   BASE LAYER
+====================== */
 @layer base {
   button {
     @apply cursor-pointer;
   }
 }
 
+/* ======================
+   COMPONENTS
+====================== */
 @layer components {
   .container {
     @apply px-4 mx-auto sm:max-w-[540px] md:max-w-[760px]
@@ -31,34 +53,47 @@ body {
     border border-neutral-600 hover:bg-neutral-700
     transition-colors;
   }
+
   .subtitle {
     @apply text-neutral-400 uppercase mb-1 text-sm lg:text-base;
   }
-  p{
-    @apply text-neutral-400 text-base sm:text-lg lg:text-xl
+
+  p {
+    @apply text-neutral-400 text-base sm:text-lg lg:text-xl;
   }
-  h2{
+
+  h2 {
     @apply text-2xl uppercase font-semibold sm:text-3xl md:text-4xl;
   }
-  .section{
-    @apply pt-24 md:mt-40
+
+  .section {
+    @apply pt-24 md:mt-40;
+  }
+
+  /* Optional reusable gradient class */
+  .bg-app {
+    @apply bg-gradient-to-br from-black via-gray-900 to-black;
   }
 }
 
-/* Header */
+/* ======================
+   HEADER / NAV
+====================== */
 .navbar {
-  @apply fixed top-0 left-0 lg:hidden bg-neutral-950 max-w-[320px] w-full h-screen
-  p-8 pt-16 -translate-x-[320px] transition-transform duration-300 z-40;
+  @apply fixed top-0 left-0 lg:hidden bg-neutral-950
+  max-w-[320px] w-full h-screen
+  p-8 pt-16 -translate-x-[320px]
+  transition-transform duration-300 z-40;
 }
 
 .navbar.active {
   @apply translate-x-0;
 }
 
-/* Already correct, just confirming */
 .overlay {
-  @apply fixed top-0 left-0 w-full h-screen bg-neutral-800/50 opacity-0
-  transition-opacity duration-300 pointer-events-none z-30;
+  @apply fixed top-0 left-0 w-full h-screen bg-neutral-800/50
+  opacity-0 transition-opacity duration-300
+  pointer-events-none z-30;
 }
 
 .overlay.active {
@@ -74,7 +109,7 @@ body {
   width: 10px;
   height: 10px;
   margin-left: 10px;
-  background: rgb(153,17,250);
+  background: rgb(153, 17, 250);
   border-radius: 50%;
   position: relative;
   transition: transform 0.3s ease-in-out;
