@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useActionState } from 'react';
 import UnderlineLink from '@/components/UnderLineLink';
 import { signInWithCredentials } from '@/lib/actions/user.actions';
-import { useActionState } from 'react';
-import { useFormStatus } from 'react-dom';
-import { Button } from '@/components/ui/button';
+import { useSearchParams } from 'next/navigation';
 
 export default function Login() {
   const [data, action] = useActionState(signInWithCredentials, {
@@ -13,9 +12,12 @@ export default function Login() {
     message: '',
   });
 
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
 
+  const [currentState, setCurrentState] =
+    useState<'Login' | 'Sign Up'>('Login');
 
-  const [currentState, setCurrentState] = useState<'Login' | 'Sign Up'>('Sign Up');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,9 +42,11 @@ export default function Login() {
         </div>
 
         {/* Form */}
-        <form 
+        <form
           action={action}
-          className="flex flex-col gap-4">
+          className="flex flex-col gap-4"
+        >
+          <input type='hidden' name='callbackUrl' value={callbackUrl}></input>
           {currentState === 'Sign Up' && (
             <input
               type="text"
@@ -60,6 +64,7 @@ export default function Login() {
             value={formData.email}
             onChange={handleChange}
             placeholder="Email"
+            required
             className="w-full px-3 py-2.5 border border-gray-800 rounded focus:outline-none"
           />
 
@@ -69,6 +74,7 @@ export default function Login() {
             value={formData.password}
             onChange={handleChange}
             placeholder="Password"
+            required
             className="w-full px-3 py-2.5 border border-gray-800 rounded focus:outline-none"
           />
 
@@ -95,9 +101,9 @@ export default function Login() {
             )}
           </div>
 
-          {/* Button */}
+          {/* Submit button */}
           <button
-            type="button"
+            type="submit"
             className="
               bg-black text-white font-light
               py-2.5 sm:py-3 mt-4
@@ -107,6 +113,13 @@ export default function Login() {
           >
             {currentState === 'Login' ? 'Sign In' : 'Sign Up'}
           </button>
+
+          {/* Server message */}
+          {data.message && (
+            <p className="text-sm text-red-600 text-center">
+              {data.message}
+            </p>
+          )}
         </form>
       </div>
     </div>
