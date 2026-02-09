@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, User } from "lucide-react";
 import Menu from "./Menu";
 import HeaderActions from "@/components/HeaderActions";
+import UserButton from "../../UserMenu";
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

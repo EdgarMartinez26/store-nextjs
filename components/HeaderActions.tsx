@@ -5,20 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { User, Heart, ShoppingCart, Menu as LucideMenu } from "lucide-react";
 import { useState } from "react";
+import UserButton from "./UserMenu";
 
 export default function HeaderActions() {
   const [isCartOpen, setCartOpen] = useState(false);
   const [isBurgerOpen, setBurgerOpen] = useState(false);
 
+  
+
   return (
     <div className="flex items-center gap-3">
-      {/* Sign In */}
-      <Link href="/sign-in">
-        <Button variant="ghost" size="icon" className="p-2">
-          <User size={22} />
-        </Button>
-      </Link>
-
       {/* Wishlist */}
       <Link href="/wishlist">
         <Button variant="ghost" size="icon" className="p-2">
@@ -60,6 +56,10 @@ export default function HeaderActions() {
           </ul>
         </SheetContent>
       </Sheet>
+
+      {/* Sign In */}
+      <UserButton />
+
     </div>
   );
 }
