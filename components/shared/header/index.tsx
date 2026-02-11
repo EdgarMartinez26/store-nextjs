@@ -5,11 +5,8 @@ import { useState } from "react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, User } from "lucide-react";
-import Menu from "./Menu";
-import HeaderActions from "@/components/HeaderActions";
-import UserButton from "../../UserMenu";
-
+import { User } from "lucide-react";
+import HeaderActions from "@/components/shared/header/HeaderActions";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
