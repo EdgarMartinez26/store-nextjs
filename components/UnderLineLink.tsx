@@ -17,7 +17,7 @@ export default function UnderlineLink({
     <span
       onClick={onClick}
       className={`
-        text-sm text-gray-600 cursor-pointer relative
+        text-sm text-gray-200 cursor-pointer relative
         after:absolute after:left-0 after:-bottom-[2px]
         after:h-[1px] after:w-0 after:bg-current
         after:transition-all after:duration-300

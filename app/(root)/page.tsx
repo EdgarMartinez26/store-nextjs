@@ -1,3 +1,4 @@
+import HeroCarousel from "@/components/carousel/Carousel";
 import ProductList from "@/components/shared/product/ProductList";
 import { getLatestProducts } from "@/lib/actions/product.actions";
 
@@ -5,7 +6,10 @@ const HomePage = async () => {
     const latestProducts = await getLatestProducts();
     return (
         <>
-            <ProductList data={latestProducts} title="Featured Products" />
+           <HeroCarousel />
+            <div className="container mx-auto py-12"> 
+                <ProductList data={latestProducts} title="Featured Products" />
+            </div>
         </>
       );
 }

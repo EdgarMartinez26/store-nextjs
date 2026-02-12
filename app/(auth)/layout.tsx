@@ -7,7 +7,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="bg-linear-to-br from-black via-gray-900 to-black">
+    <div className="">
         <Header />
         {children}
         <Footer />

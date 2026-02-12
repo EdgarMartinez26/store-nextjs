@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { fadeInUp } from "@/motion/animation";
 function Footer() {
   return (
-    <footer className="border-t border-neutral-900">
+    <footer className="border-t border-gray-200">
       {/* Top section */}
       <motion.div
         variants={fadeInUp}
