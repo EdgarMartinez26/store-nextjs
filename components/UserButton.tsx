@@ -45,7 +45,7 @@ export default function UserButton() {
   if (!session || !session.user) {
     return (
       <Link href="/sign-in">
-        <User size={20} className="text-gray-300 hover:text-white" />
+        <User size={20} className="text-gray-600 hover:text-black" />
       </Link>
     );
   }

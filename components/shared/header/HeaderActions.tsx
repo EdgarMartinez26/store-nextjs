@@ -15,7 +15,7 @@ export default function HeaderActions() {
     <div className="flex items-center gap-3">
       {/* Wishlist */}
       <Link href="/wishlist">
-        <Button variant="ghost" size="icon" className="p-2">
+        <Button variant="ghost" size="icon" className="text-gray-600 hover:text-black p-2">
           <Heart size={22} />
         </Button>
       </Link>
@@ -23,7 +23,7 @@ export default function HeaderActions() {
       {/* Cart Sidebar */}
       <Sheet open={isCartOpen} onOpenChange={setCartOpen}>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="p-2">
+          <Button variant="ghost" size="icon" className="text-gray-600 hover:text-black p-2">
             <ShoppingCart size={22} />
           </Button>
         </SheetTrigger>
@@ -39,7 +39,7 @@ export default function HeaderActions() {
       {/* Burger Sidebar */}
       <Sheet open={isBurgerOpen} onOpenChange={setBurgerOpen}>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="p-2 lg:hidden">
+          <Button variant="ghost" size="icon" className="text-gray-600 hover:text-black p-2 lg:hidden">
             <LucideMenu size={24} />
           </Button>
         </SheetTrigger>

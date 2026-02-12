@@ -37,7 +37,7 @@ export default function UserMenuClient({ name, email, role }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Avatar className="cursor-pointer">
+        <Avatar className="cursor-pointer text-gray-600 hover:text-black">
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>

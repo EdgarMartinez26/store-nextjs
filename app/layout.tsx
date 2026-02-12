@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { vremenaGrotesk } from '@/app/fonts/fonts';
+import { Inter, Big_Shoulders_Stencil } from "next/font/google";
+import { vremenaGrotesk } from "@/app/fonts/fonts";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,21 +8,26 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const bigShoulders = Big_Shoulders_Stencil({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-logo",
+});
 
 export const metadata: Metadata = {
   title: "Varkala Store",
-  description: "A mordern e-commerce store built with Next.js and TypeScript",
+  description: "A modern e-commerce store built with Next.js and TypeScript",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
-        className={`${vremenaGrotesk.variable} antialiased`}
+        className={`${vremenaGrotesk.variable} ${bigShoulders.variable} antialiased`}
       >
         {children}
       </body>

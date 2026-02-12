@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/actions/product.actions";
 import ProductGallery from "@/components/shared/productDetails/productGallery";
 import ProductInfo from "@/components/shared/productDetails/ProductInfo";
+import AddToCart from "@/components/AddToCart";
 
 type PageProps = {
   params: {

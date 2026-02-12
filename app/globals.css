@@ -26,9 +26,18 @@ html {
 
 body {
   min-height: 100vh;
-  background: var(--gradient-background);
+  background: #F8F9FA;
   color: var(--color-foreground);
 }
+
+/*
+  FONT LOGO
+*/
+.font-logo {
+  font-family: var(--font-logo);
+}
+
+
 
 /* ======================
    BASE LAYER
@@ -117,4 +126,18 @@ body {
 
 .nav-link:hover .dot {
   transform: translateY(-15px);
+}
+
+
+/*
+  Dot Move 
+*/
+.hover\:dotMove .transition-transform {
+  transform: translateY(8px); /* Moves the dot down a bit */
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover\:dotMove:hover .transition-transform {
+  transform: translateY(-12px); /* Moves the dot further down when hovered */
+  transition: transform 0.3s ease-in-out;
 }

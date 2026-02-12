@@ -23,16 +23,16 @@ const Header = () => {
     path.endsWith("/") ? path : `${path}/`;
 
   return (
-    <header className="border-b border-neutral-900">
+    <header className="border-b border-gray-300  sm:p-4">
       <div className="container flex items-center justify-between py-5 lg:pb-0">
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-3xl font-medium uppercase flex items-end gap-1"
-        >
-          Varkala
-          <span className="w-2.5 h-2.5 bg-blue-500 rounded-full mb-1" />
+        <Link href="/" className="inline-block">
+          <p className="font-logo text-black text-4xl uppercase flex font-medium items-center tracking-wider hover:dotMove">
+            Varkala
+            <span className="ml-2 w-2.5 h-2.5 rounded-full bg-blue-500 inline-block transition-transform"></span>
+          </p>
         </Link>
+
 
         {/* Mobile Menu */}
         <nav className={`navbar ${isOpen ? "active" : ""}`}>
@@ -82,22 +82,35 @@ const Header = () => {
         </nav>
 
         {/* Desktop Menu */}
-        <ul className="hidden lg:flex items-center border border-neutral-800 rounded-t-2xl overflow-hidden">
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.path}
-                className={`px-8 py-5 block transition-colors hover:bg-neutral-900 ${
-                  normalizePath(pathname) === normalizePath(item.path)
-                    ? "bg-neutral-900 font-medium"
-                    : ""
-                }`}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <ul className="hidden lg:flex items-center gap-10">
+          {navItems.map((item) => {
+            const isActive =
+              normalizePath(pathname) === normalizePath(item.path);
+            return (
+              <li key={item.id} className="relative group">
+                <Link
+                  href={item.path}
+                  className={`text-sm tracking-wide transition-colors duration-300 ${
+                    isActive
+                      ? "text-black font-semibold"
+                      : "text-gray-600 hover:text-black"
+                  }`}
+                >
+          {item.label}
+        </Link>
+
+        {/* Animated underline */}
+        <span
+          className={`absolute left-0 -bottom-1 h-[2px] bg-black transition-all duration-300 ${
+            isActive
+              ? "w-full"
+              : "w-0 group-hover:w-full"
+          }`}
+        />
+      </li>
+    );
+  })}
+</ul>
 
         {/* Desktop Actions */}
         <div className="hidden lg:flex items-center gap-3">
