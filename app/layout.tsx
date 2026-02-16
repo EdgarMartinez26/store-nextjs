@@ -5,15 +5,17 @@ import { Toaster } from "@/components/ui/sonner"
 
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const inter = Inter({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
 const bigShoulders = Big_Shoulders_Stencil({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400"], 
+  display: "swap", 
   variable: "--font-logo",
+  adjustFontFallback: false, 
 });
 
 export const metadata: Metadata = {
